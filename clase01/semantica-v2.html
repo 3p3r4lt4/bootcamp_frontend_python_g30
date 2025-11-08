@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Tecnología</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        article {
+            flex: 2;
+            background: #ecf0f1;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        aside {
+            flex: 1;
+            background: #bdc3c7;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        section {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+    // PEGA AQUÍ EL CÓDIGO JAVASCRIPT COMPLETO
+    function analizarSemanticaCompleta() {
+        function analizarSemanticaCompleta() {
+    const etiquetasSemanticas = [
+        'header', 'nav', 'main', 'article', 'section', 'aside', 
+        'footer', 'figure', 'figcaption', 'time', 'mark', 'summary', 
+        'details', 'meter', 'progress'
+    ];
+    
+    const etiquetasNoSemanticas = ['div', 'span'];
+    
+    let resultados = {
+        semanticas: {},
+        noSemanticas: {},
+        totalElementos: document.querySelectorAll('*').length
+    };
+    
+    // Contar etiquetas semánticas
+    etiquetasSemanticas.forEach(tag => {
+        const count = document.querySelectorAll(tag).length;
+        resultados.semanticas[tag] = count;
+    });
+    
+    // Contar etiquetas no semánticas
+    etiquetasNoSemanticas.forEach(tag => {
+        const count = document.querySelectorAll(tag).length;
+        resultados.noSemanticas[tag] = count;
+    });
+    
+    // Calcular porcentaje de semántica
+    const totalSemanticas = Object.values(resultados.semanticas).reduce((a, b) => a + b, 0);
+    const totalNoSemanticas = Object.values(resultados.noSemanticas).reduce((a, b) => a + b, 0);
+    const porcentajeSemantica = (totalSemanticas / (totalSemanticas + totalNoSemanticas)) * 100;
+    
+    console.log('🔍 ANÁLISIS SEMÁNTICO COMPLETO');
+    console.log('================================');
+    console.log(`📊 Total elementos: ${resultados.totalElementos}`);
+    console.log(`✅ Etiquetas semánticas: ${totalSemanticas}`);
+    console.log(`❌ Etiquetas no semánticas: ${totalNoSemanticas}`);
+    console.log(`🎯 Porcentaje semántico: ${porcentajeSemantica.toFixed(1)}%`);
+    console.log('');
+    console.log('📋 Detalle por etiqueta:');
+    console.table({...resultados.semanticas, ...resultados.noSemanticas});
+    
+    // Evaluación
+    let evaluacion = '';
+    if (porcentajeSemantica >= 70) evaluacion = '✅ EXCELENTE - Buena semántica';
+    else if (porcentajeSemantica >= 50) evaluacion = '⚠️  ACEPTABLE - Podría mejorar';
+    else evaluacion = '❌ DEFICIENTE - Muchos divs/spans';
+    
+    console.log(`📝 EVALUACIÓN: ${evaluacion}`);
+}
+
+// Ejecutar el análisis
+analizarSemanticaCompleta();
+        // ... todo el código que te di arriba ...
+    }
+    
+    // Ejecutar automáticamente al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        analizarSemanticaCompleta();
+    });
+    </script>
+
+    <!-- Cabecera -->
+    <header>
+        <h1>Blog de Tecnología</h1>
+        <p>Tu fuente de información tech</p>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#tutoriales">Tutoriales</a></li>
+            <li><a href="#noticias">Noticias</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Artículo principal -->
+        <article>
+            <h2>Introducción a las Etiquetas Semánticas</h2>
+            <p>Las etiquetas semánticas mejoran la estructura y accesibilidad de tu sitio web...</p>
+
+            <!-- Sección dentro del artículo -->
+            <section>
+                <h3>Ventajas del HTML Semántico</h3>
+                <p>Mejor SEO, mayor accesibilidad, código más mantenible...</p>
+            </section>
+
+            <section>
+                <h3>Ejemplos Prácticos</h3>
+                <p>Aquí puedes ver cómo implementar estas etiquetas...</p>
+            </section>
+        </article>
+
+        <!-- Barra lateral -->
+        <aside>
+            <h3>Artículos Relacionados</h3>
+            <ul>
+                <li><a href="#">CSS Grid vs Flexbox</a></li>
+                <li><a href="#">JavaScript Moderno</a></li>
+                <li><a href="#">Accesibilidad Web</a></li>
+            </ul>
+        </aside>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Blog de Tecnología. Todos los derechos reservados.</p>
+        <p>Contacto: info@blogtecnologia.com</p>
+    </footer>
+</body>
+
+</html>

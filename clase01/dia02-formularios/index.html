@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML- Formularios</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Formularios + input</h1>
+        <form>
+            <h2>Inputs</h2>
+
+            <label for="text1">Input tipo texto</label>
+            <input type="text" placeholder="Ingrese algun texto" id="text1" />
+
+            <label>
+                input (solo lectura)
+                <input type="text" placeholder="Input de solo lectura" readonly value="copia este codigo" />
+
+            </label>
+
+            <label>
+                input (desactivado)
+                <input type="text" placeholder="Input de solo lectura" disabled />
+
+            </label>
+
+            <label>
+                input tipo number
+                <input type="number" placeholder="Edad ej. 18" min="0" max="100" />
+
+            </label>
+
+            <label>
+                input tipo correo
+                <input type="email" placeholder="correo ej. eduardo7sistemas@gmail.com" />
+
+            </label>
+
+            <label>
+                input tipo rango
+                <input type="range" min="0" max="100" step="10" />
+
+            </label>
+
+            <label>
+                input tipo telefono
+                <input type="tel" placeholder="(+51) 935219103" />
+
+            </label>
+            <label>
+                input tipo password
+                <input type="password" placeholder="password" />
+
+            </label>
+
+            <label>
+                input tipo archivo
+                <input type="file" accept=".png" />
+
+            </label>
+
+            <label>
+                input tipo archivo v2
+                <input type="file" accept=".png" multiple />
+
+            </label>
+
+            <input type="hidden" value="Datos-ocultos">
+            <input type="submit" value="Guardar">
+
+
+        </form>
+        <form>
+            <h2>Input tipo fecha</h2>
+            <label>
+                input tipo fecha y hora
+                <input type="datetime-local">
+
+            </label>
+
+
+            <label>
+                input tipo dia
+                <input type="date">
+
+            </label>
+
+            <label>
+                input tipo hora
+                <input type="time">
+
+            </label>
+
+        </form>
+        <form>
+            <h2>Textarea</h2>
+            <label>
+                <textarea placeholder="Escribe una descripcion" cols="4"> </textarea>
+            </label>
+
+        </form>
+        <form>
+            <h2>select</h2>
+            <label>
+                <select>
+                    <option>Selecciona tu comida favorita</option>
+                    <option value="fr">Francesa</option>
+                    <option value="it">Italiana</option>
+                    <option value="jp">Japonesa</option>
+                    <option value="pe">Peruana</option>
+                </select>
+            </label>
+
+            <label>
+                seleccion multiple
+                <select multiple>
+                    <option>Selecciona tu comida favorita</option>
+                    <option value="fr">Francesa</option>
+                    <option value="it">Italiana</option>
+                    <option value="jp">Japonesa</option>
+                    <option value="pe">Peruana</option>
+                </select>
+            </label>
+        </form>
+
+        <form>
+            <h2>checkboxes</h2>
+            <h3>lenguaje de preferencia</h3>
+            <label>
+                <input type="checkbox" name="english" value="en" />
+                Ingles
+            </label>
+            <label>
+                <input type="checkbox" name="spanish" value="es" />
+                Español
+            </label>
+        </form>
+
+        <form>
+            <h2>Radio buttons</h2>
+
+
+            <h3>Seleccione el lenguaje de preferencia:</h3>
+
+
+            <label>
+                <input type="radio" name="lenguaje" value="en" />
+                Inglés
+            </label>
+            <label>
+                <input type="radio" name="lenguaje" value="es" />
+                Español
+            </label>
+            <label>
+                <input type="radio" name="lenguaje" value="do" />
+                Dothraki
+            </label>
+
+
+            <h3>Seleccione su comida favorita:</h3>
+
+
+            <label>
+                <input type="radio" name="comida" value="ceviche" />
+                Ceviche
+            </label>
+            <label>
+                <input type="radio" name="comida" value="causa" />
+                Causa
+            </label>
+            <label>
+                <input type="radio" name="comida" value="arroz" />
+                Arroz con pato
+            </label>
+        </form>
+
+        <form>
+            <h2>Validaciones</h2>
+            <label>
+                Nombre (obligatorio)
+                <input type="text" name="nombre" required minlength="3" maxlength="15" />
+                <input type="submit" name="Guardar" />
+            </label>
+
+            <label>
+                Email (obligatorio)
+                <input type="email" name="correo" required />
+
+            </label>
+
+            <label>
+                Comidas (obligatorio)
+                <select name="comidas" required>
+                    <option value="Seleccion tu comida"></option>
+                    <option>Francesa</option>
+                    <option>peruana</option>
+                    <option>Italiana</option>
+
+                </select>
+
+            </label>
+
+
+        </form>
+
+
+    </main>
+
+</body>
+
+</html>
