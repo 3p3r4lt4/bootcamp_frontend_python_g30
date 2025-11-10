@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Product preview card component</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset y estilos base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      background-color: hsl(30, 38%, 92%);
+      color: hsl(228, 12%, 48%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Card Container */
+    .card {
+      background-color: hsl(0, 0%, 100%);
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    /* Layout responsive */
+    .card-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 450px;
+    }
+
+    /* Contenedor de imagen */
+    .image-container {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Ocultar/mostrar imágenes según dispositivo */
+    .desktop-img {
+      display: block;
+    }
+    
+    .mobile-img {
+      display: none;
+    }
+
+    /* Contenido del producto */
+    .product-info {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-category {
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-size: 0.75rem;
+      margin-bottom: 1.2rem;
+      color: hsl(228, 12%, 48%);
+      font-weight: 500;
+    }
+
+    .product-title {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      line-height: 1;
+      color: hsl(212, 21%, 14%);
+      margin-bottom: 1.5rem;
+    }
+
+    .product-description {
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+      font-size: 0.875rem;
+    }
+
+    /* Precios */
+    .price-container {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .current-price {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      color: hsl(158, 36%, 37%);
+    }
+
+    .original-price {
+      text-decoration: line-through;
+      font-size: 0.85rem;
+    }
+
+    /* Botón */
+    .add-to-cart-btn {
+      background-color: hsl(158, 36%, 37%);
+      color: hsl(0, 0%, 100%);
+      border: none;
+      border-radius: 8px;
+      padding: 1rem 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      width: 100%;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: hsl(158, 42%, 18%);
+    }
+
+    .add-to-cart-btn:focus {
+      outline: 2px solid hsl(158, 36%, 37%);
+      outline-offset: 2px;
+    }
+
+    .cart-icon {
+      width: 15px;
+      height: 16px;
+    }
+
+    /* Footer */
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 650px) {
+      .card-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: 240px 1fr;
+        max-width: 345px;
+      }
+
+      .desktop-img {
+        display: none;
+      }
+      
+      .mobile-img {
+        display: block;
+      }
+
+      .product-info {
+        padding: 1.5rem;
+        gap: 0.8rem;
+      }
+
+      .product-title {
+        font-size: 1.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .product-category {
+        margin-bottom: 0.8rem;
+      }
+
+      .product-description {
+        margin-bottom: 1.2rem;
+        font-size: 0.84rem;
+      }
+
+      .price-container {
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    /* Estilos de depuración - pueden ayudar a identificar el problema */
+    .debug-border {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="card">
+    <div class="card-content">
+      <!-- SOLUCIÓN 1: Usar div separado para imagen -->
+      <div class="image-container">
+        <img src="./images/image-product-desktop.jpg" 
+             alt="Gabrielle Essence Eau De Parfum bottle" 
+             class="product-image desktop-img">
+        <img src="./images/image-product-mobile.jpg" 
+             alt="Gabrielle Essence Eau De Parfum bottle" 
+             class="product-image mobile-img">
+      </div>
+      
+      <div class="product-info">
+        <div class="text-content">
+          <p class="product-category">Perfume</p>
+          <h1 class="product-title">Gabrielle Essence Eau De Parfum</h1>
+          <p class="product-description">
+            A floral, solar and voluptuous interpretation composed by Olivier Polge, 
+            Perfumer-Creator for the House of CHANEL.
+          </p>
+        </div>
+        
+        <div class="purchase-section">
+          <div class="price-container">
+            <span class="current-price">$149.99</span>
+            <span class="original-price">$169.99</span>
+          </div>
+          
+          <button class="add-to-cart-btn">
+            <svg class="cart-icon" width="15" height="16" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14.383 10.388a2.397 2.397 0 0 0-1.518-2.222l1.494-5.593a.8.8 0 0 0-.144-.695.8.8 0 0 0-.631-.28H2.637L2.373.591A.8.8 0 0 0 1.598 0H0v1.598h.983l1.982 7.4a.8.8 0 0 0 .799.59h8.222a.8.8 0 0 0 0-1.599H1.598a.8.8 0 0 1 0-1.598h.943l-1-3.8H13.239l-1.285 4.8a.8.8 0 0 0 .631.95 2.397 2.397 0 1 0 2.798 1.85 2.397 2.397 0 0 0-1-1.658z" fill="#FFF" fill-rule="nonzero"/>
+            </svg>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+
+  <!-- Script para verificar rutas de imágenes -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Verificar si las imágenes se cargan correctamente
+      const images = document.querySelectorAll('.product-image');
+      images.forEach(img => {
+        img.onerror = function() {
+          console.error('Error cargando imagen:', img.src);
+          // Mostrar imagen de respaldo
+          img.style.backgroundColor = '#f0f0f0';
+          img.style.display = 'flex';
+          img.style.alignItems = 'center';
+          img.style.justifyContent = 'center';
+          img.innerHTML = '<span style="color: #666;">Imagen no encontrada</span>';
+        };
+        
+        img.onload = function() {
+          console.log('Imagen cargada correctamente:', img.src);
+        };
+      });
+    });
+  </script>
+
+</body>
+</html>

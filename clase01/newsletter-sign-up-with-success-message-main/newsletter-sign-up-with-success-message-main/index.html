@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset y estilos base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      background-color: hsl(235, 18%, 26%);
+      color: hsl(234, 29%, 20%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Container principal */
+    .container {
+      background-color: hsl(0, 0%, 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      max-width: 800px;
+      margin-bottom: 2rem;
+    }
+
+    /* Layout del formulario */
+    .signup-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 1.5rem;
+    }
+
+    /* Contenido izquierdo */
+    .form-content {
+      padding: 2rem 1rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: hsl(234, 29%, 20%);
+    }
+
+    .form-description {
+      margin-bottom: 1.5rem;
+      color: hsl(234, 29%, 20%);
+    }
+
+    /* Lista de beneficios */
+    .benefits-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .benefits-list li:before {
+      content: '';
+      background-image: url('./assets/images/icon-list.svg');
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Formulario */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .label-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: hsl(234, 29%, 20%);
+    }
+
+    .error-message {
+      color: hsl(4, 100%, 67%);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: none;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 1px solid hsl(231, 7%, 60%);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input[type="email"]:focus {
+      outline: none;
+      border-color: hsl(234, 29%, 20%);
+    }
+
+    input[type="email"].error {
+      border-color: hsl(4, 100%, 67%);
+      background-color: hsla(4, 100%, 67%, 0.1);
+      color: hsl(4, 100%, 67%);
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background-color: hsl(234, 29%, 20%);
+      color: hsl(0, 0%, 100%);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, hsl(347, 100%, 66%), hsl(4, 100%, 67%));
+      box-shadow: 0 10px 20px rgba(255, 98, 87, 0.3);
+    }
+
+    /* Imagen derecha */
+    .image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .illustration-desktop {
+      width: 100%;
+      height: auto;
+    }
+
+    .illustration-mobile {
+      display: none;
+      width: 100%;
+    }
+
+    /* Mensaje de éxito - CORREGIDO */
+    .success-message {
+      display: none;
+      padding: 3rem;
+      max-width: 450px;
+    }
+
+    .success-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 2rem;
+    }
+
+    .success-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1;
+    }
+
+    .success-text {
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .user-email {
+      font-weight: 700;
+      color: hsl(234, 29%, 20%);
+    }
+
+    .dismiss-btn {
+      margin-top: auto;
+    }
+
+    /* Footer */
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+      color: hsl(0, 0%, 100%);
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body {
+        padding: 0;
+        background-color: hsl(0, 0%, 100%);
+      }
+
+      .container {
+        border-radius: 0;
+        max-width: 100%;
+        margin-bottom: 0;
+      }
+
+      .signup-form {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 0;
+        padding: 0;
+      }
+
+      .image-container {
+        order: -1;
+      }
+
+      .illustration-desktop {
+        display: none;
+      }
+
+      .illustration-mobile {
+        display: block;
+      }
+
+      .form-content {
+        padding: 2rem 1.5rem;
+      }
+
+      .form-title {
+        font-size: 2.5rem;
+      }
+
+      .success-message {
+        padding: 2rem 1.5rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .success-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .success-text {
+        margin-bottom: 2rem;
+      }
+
+      .dismiss-btn {
+        margin-top: auto;
+      }
+    }
+
+    /* Estados de error */
+    .show-error {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sign-up form start -->
+  <div class="container">
+    <div class="signup-form" id="signupForm">
+      <div class="form-content">
+        <h1 class="form-title">Stay updated!</h1>
+        
+        <p class="form-description">
+          Join 60,000+ product managers receiving monthly updates on:
+        </p>
+        
+        <ul class="benefits-list">
+          <li>Product discovery and building what matters</li>
+          <li>Measuring to ensure updates are a success</li>
+          <li>And much more!</li>
+        </ul>
+        
+        <form id="newsletterForm">
+          <div class="form-group">
+            <div class="label-container">
+              <label for="email">Email address</label>
+              <span class="error-message" id="emailError">Valid email required</span>
+            </div>
+            <input 
+              type="email" 
+              id="email" 
+              placeholder="email@company.com" 
+              required
+            >
+          </div>
+          
+          <button type="submit" id="submitBtn">
+            Subscribe to monthly newsletter
+          </button>
+        </form>
+      </div>
+      
+      <div class="image-container">
+        <img 
+          src="./assets/images/illustration-sign-up-desktop.svg" 
+          alt="Sign up illustration" 
+          class="illustration-desktop"
+        >
+        <img 
+          src="./assets/images/illustration-sign-up-mobile.svg" 
+          alt="Sign up illustration" 
+          class="illustration-mobile"
+        >
+      </div>
+    </div>
+
+    <!-- Success message start - TEXTO CORREGIDO -->
+    <div class="success-message" id="successMessage">
+      <img 
+        src="./assets/images/icon-success.svg" 
+        alt="Success icon" 
+        class="success-icon"
+      >
+      
+      <h2 class="success-title">Thanks for subscribing!</h2>
+      
+      <p class="success-text">
+        A confirmation email has been sent to 
+        <span class="user-email" id="userEmail">ash@loremcompany.com</span>. 
+        Please open it and click the button inside to confirm your subscription.
+      </p>
+      
+      <button class="dismiss-btn" id="dismissBtn">
+        Dismiss message
+      </button>
+    </div>
+    <!-- Success message end -->
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const signupForm = document.getElementById('signupForm');
+      const successMessage = document.getElementById('successMessage');
+      const newsletterForm = document.getElementById('newsletterForm');
+      const emailInput = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+      const userEmail = document.getElementById('userEmail');
+      const dismissBtn = document.getElementById('dismissBtn');
+      const submitBtn = document.getElementById('submitBtn');
+
+      // Validación de email
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      // Mostrar error
+      function showError() {
+        emailInput.classList.add('error');
+        emailError.classList.add('show-error');
+      }
+
+      // Ocultar error
+      function hideError() {
+        emailInput.classList.remove('error');
+        emailError.classList.remove('show-error');
+      }
+
+      // Manejar envío del formulario
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = emailInput.value.trim();
+        
+        if (!email || !isValidEmail(email)) {
+          showError();
+        } else {
+          hideError();
+          // Mostrar mensaje de éxito
+          userEmail.textContent = email;
+          signupForm.style.display = 'none';
+          successMessage.style.display = 'block';
+          
+          // En mobile, hacer que ocupe toda la pantalla
+          if (window.innerWidth <= 768) {
+            successMessage.style.display = 'flex';
+            document.querySelector('.container').style.maxWidth = '100%';
+          }
+        }
+      });
+
+      // Validación en tiempo real
+      emailInput.addEventListener('input', function() {
+        if (isValidEmail(this.value.trim())) {
+          hideError();
+        }
+      });
+
+      // Botón dismiss
+      dismissBtn.addEventListener('click', function() {
+        successMessage.style.display = 'none';
+        signupForm.style.display = 'grid';
+        newsletterForm.reset();
+        
+        // Restaurar estilos en mobile
+        if (window.innerWidth <= 768) {
+          document.querySelector('.container').style.maxWidth = '100%';
+        }
+      });
+
+      // Manejar tecla Enter en el input
+      emailInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          newsletterForm.dispatchEvent(new Event('submit'));
+        }
+      });
+
+      // Manejar cambio de tamaño de ventana
+      window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768 && successMessage.style.display !== 'none') {
+          successMessage.style.display = 'flex';
+        } else if (window.innerWidth > 768 && successMessage.style.display !== 'none') {
+          successMessage.style.display = 'block';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
