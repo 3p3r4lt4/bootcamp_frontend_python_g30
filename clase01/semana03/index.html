@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teoria de css</title>
+    <style>
+        /*pseudo clases */
+        /*actua cuando el usuario interactua con un elemento */
+        button {
+            background-color: red;
+        }
+
+        button:hover {
+            background-color: green;
+            cursor: pointer;
+        }
+
+        p {
+            color: blue;
+        }
+
+        p::before {
+            content: '😎';
+            color: greenyellow
+        }
+
+        p::after {
+            content: '👍';
+            color: greenyellow
+        }
+
+        article h2 {
+            color: orange;
+        }
+
+        article strong {
+            color: orange;
+        }
+
+        h1,
+        h3,
+        em {
+            border: 5px solid salmon;
+        }
+
+        body {
+            color: blue;
+        }
+
+        button {
+            color: inherit;
+        }
+
+        /* cascada*/
+        header {
+            color: green;
+        }
+
+        .texto {
+            color: blue;
+        }
+
+        #cabecera {
+            color: red;
+        }
+
+        /* Colores */
+
+        h2 {
+            color: red;
+            color: #9b6f17;
+            /* 3 numeros hexadecimales (red, green, blue)  */
+            color: hsl(99, 92%, 37%);
+            /* Hue (matiz), Saturation(saturacion), Lightness(luminosidad) */
+            color: hsla(99, 92%, 37%, 0.5);
+            /* Con transparencia */
+
+            color: rgb(0, 0, 255);
+            /* 3 numeros decimales van entre 0 y 255 (rojo, verde, azul) */
+            color: rgba(0, 0, 255, 0.5);
+            /* Con transparencia */
+        }
+    </style>
+</head>
+
+<body>
+    <button>Click aqui</button>
+    <p>Texto especial</p>
+
+    <article>
+        <h2>
+            Bienvenidos
+        </h2>
+        <strong>Hola</strong>
+    </article>
+
+    <section>
+        <h1>Titulo</h1>
+        <h2>Subtitulo</h2>
+        <em>Texto con enfasis</em>
+    </section>
+    <header id="cabecera" class="texto">de que color soy?</header>
+</body>
+
+</html>

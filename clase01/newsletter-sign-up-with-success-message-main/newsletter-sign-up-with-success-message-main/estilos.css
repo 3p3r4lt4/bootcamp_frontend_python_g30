@@ -1,0 +1,271 @@
+/* Reset y estilos base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      background-color: hsl(235, 18%, 26%);
+      color: hsl(234, 29%, 20%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Container principal */
+    .container {
+      background-color: hsl(0, 0%, 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      max-width: 800px;
+      margin-bottom: 2rem;
+    }
+
+    /* Layout del formulario */
+    .signup-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 1.5rem;
+    }
+
+    /* Contenido izquierdo */
+    .form-content {
+      padding: 2rem 1rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: hsl(234, 29%, 20%);
+    }
+
+    .form-description {
+      margin-bottom: 1.5rem;
+      color: hsl(234, 29%, 20%);
+    }
+
+    /* Lista de beneficios */
+    .benefits-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .benefits-list li:before {
+      content: '';
+      background-image: url('./assets/images/icon-list.svg');
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Formulario */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .label-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: hsl(234, 29%, 20%);
+    }
+
+    .error-message {
+      color: hsl(4, 100%, 67%);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: none;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 1px solid hsl(231, 7%, 60%);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input[type="email"]:focus {
+      outline: none;
+      border-color: hsl(234, 29%, 20%);
+    }
+
+    input[type="email"].error {
+      border-color: hsl(4, 100%, 67%);
+      background-color: hsla(4, 100%, 67%, 0.1);
+      color: hsl(4, 100%, 67%);
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background-color: hsl(234, 29%, 20%);
+      color: hsl(0, 0%, 100%);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, hsl(347, 100%, 66%), hsl(4, 100%, 67%));
+      box-shadow: 0 10px 20px rgba(255, 98, 87, 0.3);
+    }
+
+    /* Imagen derecha */
+    .image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .illustration-desktop {
+      width: 100%;
+      height: auto;
+    }
+
+    .illustration-mobile {
+      display: none;
+      width: 100%;
+    }
+
+    /* Mensaje de éxito - CORREGIDO */
+    .success-message {
+      display: none;
+      padding: 3rem;
+      max-width: 450px;
+    }
+
+    .success-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 2rem;
+    }
+
+    .success-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1;
+    }
+
+    .success-text {
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .user-email {
+      font-weight: 700;
+      color: hsl(234, 29%, 20%);
+    }
+
+    .dismiss-btn {
+      margin-top: auto;
+    }
+
+    /* Footer */
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+      color: hsl(0, 0%, 100%);
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body {
+        padding: 0;
+        background-color: hsl(0, 0%, 100%);
+      }
+
+      .container {
+        border-radius: 0;
+        max-width: 100%;
+        margin-bottom: 0;
+      }
+
+      .signup-form {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 0;
+        padding: 0;
+      }
+
+      .image-container {
+        order: -1;
+      }
+
+      .illustration-desktop {
+        display: none;
+      }
+
+      .illustration-mobile {
+        display: block;
+      }
+
+      .form-content {
+        padding: 2rem 1.5rem;
+      }
+
+      .form-title {
+        font-size: 2.5rem;
+      }
+
+      .success-message {
+        padding: 2rem 1.5rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .success-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .success-text {
+        margin-bottom: 2rem;
+      }
+
+      .dismiss-btn {
+        margin-top: auto;
+      }
+    }
+
+    /* Estados de error */
+    .show-error {
+      display: block;
+    }

@@ -1,0 +1,333 @@
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Karla', sans-serif;
+  font-size: 16px;
+  background-color: hsl(148, 38%, 91%);
+  color: hsl(187, 24%, 22%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+/* Container principal */
+.container {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+/* Título principal */
+.main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: hsl(187, 24%, 22%);
+}
+
+/* Layout del formulario */
+.contact-form {
+  display: block;
+}
+
+/* Fila para nombres */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Grupos de formulario */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: hsl(187, 24%, 22%);
+  font-size: 0.9rem;
+}
+
+/* Inputs y textarea */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid hsl(186, 15%, 59%);
+  border-radius: 6px;
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: hsl(169, 82%, 27%);
+  box-shadow: 0 0 0 2px hsla(169, 82%, 27%, 0.2);
+}
+
+.form-input.error,
+.form-textarea.error {
+  border-color: hsl(0, 66%, 54%);
+  background-color: hsla(0, 66%, 54%, 0.05);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Grupo de radio buttons */
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid hsl(186, 15%, 59%);
+  border-radius: 6px;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+  background-color: hsl(0, 0%, 100%);
+}
+
+.radio-option:hover {
+  border-color: hsl(169, 82%, 27%);
+  background-color: hsl(148, 38%, 91%);
+}
+
+.radio-input {
+  display: none;
+}
+
+.radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid hsl(186, 15%, 59%);
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.radio-input:checked + .radio-custom {
+  border-color: hsl(169, 82%, 27%);
+  background-color: hsl(169, 82%, 27%);
+}
+
+.radio-input:checked + .radio-custom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.radio-input:checked ~ span:last-child {
+  color: hsl(169, 82%, 27%);
+  font-weight: 700;
+}
+
+/* Checkbox */
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.checkbox-input {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid hsl(186, 15%, 59%);
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  border-color: hsl(169, 82%, 27%);
+  background-color: hsl(169, 82%, 27%);
+}
+
+.checkbox-input:checked + .checkbox-custom::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Botón de envío */
+.submit-btn {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: hsl(169, 82%, 27%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Karla', sans-serif;
+}
+
+.submit-btn:hover {
+  background-color: hsl(169, 82%, 22%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mensajes de error */
+.error-message {
+  color: hsl(0, 66%, 54%);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: none;
+  margin-top: 0.5rem;
+}
+
+.show-error {
+  display: block;
+}
+
+/* Mensaje de éxito */
+.success-message {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.5rem;
+}
+
+.success-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: hsl(187, 24%, 22%);
+}
+
+.success-text {
+  margin-bottom: 2rem;
+  color: hsl(186, 15%, 59%);
+  line-height: 1.6;
+}
+
+.dismiss-btn {
+  padding: 0.75rem 2rem;
+  background-color: hsl(169, 82%, 27%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Karla', sans-serif;
+}
+
+.dismiss-btn:hover {
+  background-color: hsl(169, 82%, 22%);
+}
+
+/* Footer */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  color: hsl(187, 24%, 22%);
+}
+
+.attribution a {
+  color: hsl(169, 82%, 27%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+    background-color: hsl(0, 0%, 100%);
+  }
+
+  .container {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .radio-group {
+    flex-direction: column;
+  }
+
+  .main-title {
+    font-size: 1.75rem;
+  }
+
+  .success-message {
+    padding: 1rem 0;
+  }
+
+  .success-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Estados de focus para accesibilidad */
+.form-input:focus-visible,
+.form-textarea:focus-visible,
+.radio-input:focus-visible + .radio-custom,
+.checkbox-input:focus-visible + .checkbox-custom,
+.submit-btn:focus-visible,
+.dismiss-btn:focus-visible {
+  outline: 2px solid hsl(169, 82%, 27%);
+  outline-offset: 2px;
+}
