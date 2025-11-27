@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | E-commerce product page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <nav class="nav">
+      <img src="./images/icon-menu.svg" alt="Menu" class="nav__menu">
+      <img src="./images/logo.svg" alt="Sneakers" class="nav__logo">
+
+      <div class="nav__links">
+        <a href="#" class="nav__link">Collections</a>
+        <a href="#" class="nav__link">Men</a>
+        <a href="#" class="nav__link">Women</a>
+        <a href="#" class="nav__link">About</a>
+        <a href="#" class="nav__link">Contact</a>
+      </div>
+
+      <div class="nav__actions">
+        <img src="./images/icon-cart.svg" alt="Cart" class="nav__cart">
+        <img src="./images/image-avatar.png" alt="Avatar" class="nav__avatar">
+      </div>
+
+     
+      <div class="cart">
+        <div class="cart__items">
+          <div class="cart__empty">Your cart is empty</div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <div class="product">
+      <div class="product__gallery">
+        <!-- Slider Principal -->
+        <div class="slider">
+          <div class="slider__main">
+            <img src="./images/image-product-1.jpg" alt="Sneaker 1" class="slider__image slider__image--active">
+            <img src="./images/image-product-2.jpg" alt="Sneaker 2" class="slider__image">
+            <img src="./images/image-product-3.jpg" alt="Sneaker 3" class="slider__image">
+            <img src="./images/image-product-4.jpg" alt="Sneaker 4" class="slider__image">
+          </div>
+
+          <!-- Controles del Slider -->
+          <button class="slider__btn slider__btn--prev">
+            <img src="./images/icon-previous.svg" alt="Previous">
+          </button>
+          <button class="slider__btn slider__btn--next">
+            <img src="./images/icon-next.svg" alt="Next">
+          </button>
+
+          <!-- Miniaturas -->
+          <div class="slider__thumbnails">
+            <div class="slider__thumb slider__thumb--active">
+              <img src="./images/image-product-1-thumbnail.jpg" alt="Thumbnail 1">
+            </div>
+            <div class="slider__thumb">
+              <img src="./images/image-product-2-thumbnail.jpg" alt="Thumbnail 2">
+            </div>
+            <div class="slider__thumb">
+              <img src="./images/image-product-3-thumbnail.jpg" alt="Thumbnail 3">
+            </div>
+            <div class="slider__thumb">
+              <img src="./images/image-product-4-thumbnail.jpg" alt="Thumbnail 4">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product__info">
+        <span class="product__brand">Sneaker Company</span>
+        <h1 class="product__title">Fall Limited Edition Sneakers</h1>
+        <p class="product__description">
+          These low-profile sneakers are your perfect casual wear companion. Featuring a
+          durable rubber outer sole, they'll withstand everything the weather can offer.
+        </p>
+
+        <div class="product__pricing">
+          <div class="product__price-current">$125.00</div>
+          <div class="product__price-discount">50%</div>
+          <div class="product__price-original">$250.00</div>
+        </div>
+
+        <div class="product__actions">
+          <div class="quantity">
+            <button class="quantity__btn">
+              <img src="./images/icon-minus.svg" alt="Decrease">
+            </button>
+            <span class="quantity__value">0</span>
+            <button class="quantity__btn">
+              <img src="./images/icon-plus.svg" alt="Increase">
+            </button>
+          </div>
+          <button class="button button--primary">
+            <img src="./images/icon-cart-white.svg" alt="Cart" class="button__icon">
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>
