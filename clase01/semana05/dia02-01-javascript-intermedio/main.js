@@ -435,3 +435,358 @@ console.log(intercalarArreglos([1, 2, 3], ['a', 'b', 'c'])) // [1, 'a', 2, 'b', 
 // https://www.w3schools.com/js/js_array_methods.asp
 // https://www.freecodecamp.org/espanol/news/los-10-metodos-de-arreglos-javascript-mas-utilizados-con-ejemplos/
 // https://www.javascripttutorial.net/javascript-array-methods/
+
+
+const languages =['javascrip','php', 'python','php' ,'java','C','c++']
+
+console.log(languages)
+
+console.log('incluide' ,languages.includes('php'))
+
+const lenguajeFiltrados = languages.filter(
+  function (language) {
+
+    // return true
+    // return language ==='php'
+    // return language.includes('c') || language.includes('C')
+    return language.toLowerCase().includes('c')
+  }
+)
+
+console.log('FILTER' ,lenguajeFiltrados)
+
+console.log(languages)
+
+// TODO: EJERCICIO - Busca solo las personas cuyo nombre empieza con una vocal 
+
+const lista = ["Ana", "Luis", "Oscar", "Elena", "Pedro"];
+
+// Resultado esperado: ["Ana", "Oscar", "Elena"]
+
+const personasConVocal = lista.filter(function(nombre) {
+  // Array de vocales (en minúscula)
+  const vocales = ['a', 'e', 'i', 'o', 'u'];
+  // Obtener la primera letra del nombre y convertirla a minúscula
+  const primeraLetra = nombre.charAt(0).toLowerCase();
+  // Usar includes() para verificar si la primera letra está en el array de vocales
+  return vocales.includes(primeraLetra);
+});
+
+console.log('Personas cuyo nombre empieza con vocal:', personasConVocal);
+
+
+// Método MAP, devuelve un arreglo y modifica cada elemento pasando una función(callback)
+// El map siempre devuelve un arreglo nuevo
+
+const nombresConAsterisco = languages.map(function(lenguaje) {
+  return lenguaje + '*'
+})
+
+console.log('MAP', nombresConAsterisco)
+console.log(languages)
+
+// EJERCICIO: Análisis de compras
+// Tienes un arreglo con los nombres de productos que un cliente compró en una tienda:
+
+const compras = [
+  "manzana",
+  "pan",
+  "leche",
+  "manzana",
+  "queso",
+  "huevo",
+  "pan",
+  "jugo",
+  "manzana"
+];
+
+// Resuelve lo siguiente:
+
+// includes: Verifica si el cliente compró "queso".
+
+console.log('¿El cliente compró queso?', compras.includes('queso'));
+
+// filter: Crea un nuevo arreglo que contenga solo las manzanas que se compraron.
+
+const soloManzanas = compras.filter(function(producto) {
+  return producto === 'manzana';
+});
+
+console.log('Solo manzanas:', soloManzanas);
+
+// map: Convierte cada producto en un arreglo que contenga: El nombre del producto y La cantidad de letras que tiene. Por ejemplo: "pan" → ["pan", 3]
+
+const productosConLongitud = compras.map(function(producto) {
+  return [producto, producto.length];
+});
+
+console.log('Productos con longitud:', productosConLongitud);
+
+// reduce: Cuenta cuántos productos en total compró el cliente.
+const totalProductos = compras.reduce(function(acumulador, c) {
+  return acumulador + 1;
+}, 0);
+
+console.log('Total de productos comprados:', totalProductos);
+
+
+
+// Método REDUCE, nos ayuda a tomar los valores de un arreglo y sumarlos.
+
+const numeros = [3, 40, 100, 7, 50] // 200
+
+let acumulador = 0
+
+for(let i=0; i < numeros.length; i++) {
+  console.log(i, numeros[i])
+  acumulador = acumulador + numeros[i]
+}
+
+console.log(acumulador)
+
+// Vamos a usar reduce
+
+const sumatoria = numeros.reduce(
+  function(acumulador, valorActual) {
+    return acumulador + valorActual
+  }, 0
+)
+
+console.log(sumatoria)
+
+// Método SORT y TOSORTED, nos ayuda a ordenar un arreglo de elementos.
+// SORT: ⚠ ⚠ ⚠ Mute el arreglo original. Ordena cadenas de texto.
+
+// [...leguajesDeProgramacion]: esta sintáxis copia el arreglo original en un nuevo arreglo
+
+const leguajesDeProgramacion =  ['javascript', 'php', 'python', 'C', 'c++', 'java', 'python']
+
+const copiaDeLenguajes = [...leguajesDeProgramacion]
+const ordenandoLenguajes = copiaDeLenguajes.sort()
+
+const ordenandoLanguajesMejorado = leguajesDeProgramacion.toSorted()
+
+console.log(ordenandoLenguajes)
+console.log(copiaDeLenguajes)
+console.log(ordenandoLanguajesMejorado)
+console.log(leguajesDeProgramacion)
+
+const edades = [25, 12, 10, 89, 32, 81, 3]
+
+console.log(edades.sort()) // [10, 12, 25, 3, 32, 81, 89]
+
+const ordenandoEdadesAsc = [...edades].sort(
+  function(a, b) {
+    // Si el resultado es negativo -> a va antes que b
+    // Si el resultado es positivo -> b va antes que a
+    // Si es 0 -> son iguales -> ni a ni b se intercambian
+    return a - b
+  }
+)
+
+const ordenandoEdadesDesc = [...edades].sort(
+  function(a, b) {
+    return b - a
+  }
+)
+
+console.log(ordenandoEdadesAsc)
+console.log(ordenandoEdadesDesc)
+
+// Método FOREACH, nos ayuda a recorrer un arreglo sin tener ningún retorno de datos
+
+const miArreglo = []
+
+languages.forEach(
+  function(language, index) {
+    if (index > 3) {
+      miArreglo.push('hola--' + language)
+    }
+  }
+)
+
+console.log(miArreglo)
+
+// TODO: Investigar los métodos indexOf, find, every, some, findIndex, flat
+
+// EJERCICIO: Eliminar duplicados 
+// Usando filter() + indexOf() nos quedamos solo con la primera aparición.
+const nombres = ["Ana", "Luis", "Ana", "Pedro", "Luis"];
+
+// Resultado esperado: ["Ana", "Luis", "Pedro"]
+
+const nombresUnicos = nombres.filter(function(nombre, indice, array) {
+  // indexOf() devuelve el primer índice donde se encuentra el elemento
+  // Si el índice actual es igual al primer índice encontrado, es la primera aparición
+  return array.indexOf(nombre) === indice;
+});
+
+console.log('Array original:', nombres);
+console.log('Array sin duplicados:', nombresUnicos);
+
+
+
+// EJERCICIO: Validar si todos los correos contienen “@” y quedarte solo con los válidos
+
+const correos = ["test@gmail.com", "infohotmail.com", "admin@outlook.com"];
+
+// Resultado esperado: ["test@gmail.com", "admin@outlook.com"]
+
+const correosValidos = correos.filter(function(correo) {
+  return correo.includes('@');
+});
+
+console.log('Correos originales:', correos);
+console.log('Correos válidos (con @):', correosValidos);
+
+// EJERCICIO: Encontrar el primer número mayor a 100 y verificar si hay varios
+// Combina: find + some + filter
+
+const nums2 = [10, 55, 120, 80, 200];
+
+// 1. find(): Encontrar el primer número mayor a 100
+const primerMayor100 = nums2.find(function(numero) {
+  return numero > 100;
+});
+console.log('Primer número mayor a 100:', primerMayor100);
+// Resultado: 120
+
+// 2. some(): Verificar si hay al menos un número mayor a 100
+const hayMayores100 = nums2.some(function(numero) {
+  return numero > 100;
+});
+console.log('¿Hay números mayores a 100?:', hayMayores100);
+// Resultado: true
+
+// 3. filter(): Encontrar TODOS los números mayores a 100
+const todosMayores100 = nums2.filter(function(numero) {
+  return numero > 100;
+});
+console.log('Todos los números mayores a 100:', todosMayores100);
+// Resultado: [120, 200]
+console.log('Cantidad de números mayores a 100:', todosMayores100.length);
+// Resultado: 2
+
+// Verificar si hay varios números mayores a 100
+const hayVariosMayores100 = todosMayores100.length > 1;
+console.log('¿Hay varios números mayores a 100?:', hayVariosMayores100);
+// Resultado: true
+
+// OBJETOS, Tipo de dato no primitivo
+
+/*
+  {
+    key: value,
+    key1: value1,
+    key2: value2,
+  }
+*/
+
+const miObjetoVacio = {} // 👁 Esto es un objeto
+
+const miObjeto = {
+  nombre: 'Victor',
+  apellido: 'Villazón',
+  colorFavorito: 'verde',
+  edad: 39,
+  esMayorDeEdad: true,
+  coloresFavoritos: ['azúl', 'rojo', 'morado'],
+  'mi edad': 39,
+  cursos: [
+    {
+      nombre: 'Matemática',
+      nota: 18
+    }, {
+      nombre: 'Algoritmos',
+      nota: 14
+    }
+  ],
+  devolverCursosAprobados: function () {
+    return this.cursos.filter(function(curso) {
+      return curso.nota > 14
+    })
+  }
+}
+
+console.log(miObjetoVacio)
+console.log(miObjeto)
+console.log(miObjeto.colorFavorito)
+console.log(miObjeto.coloresFavoritos[1])
+
+console.log(miObjeto.cursos[1].nombre)
+console.log(miObjeto.cursos[1].nota)
+console.log(miObjeto['mi edad']) 
+
+console.log('Cursos aprobados:', miObjeto.devolverCursosAprobados())
+
+miObjeto.edad = 40;
+
+console.log(miObjeto)
+
+// ELIMINAR PROPIEDADES DE UN OBJETO
+
+const copiaDeMiObjeto = {...miObjeto}
+
+delete copiaDeMiObjeto.colorFavorito
+delete copiaDeMiObjeto.cursos
+delete copiaDeMiObjeto['mi edad']
+
+console.log(copiaDeMiObjeto) // Si cambia por que hemos eliminado las propiedades en este objeto clonado
+console.log(miObjeto) // Se mantiene igual por que es el arreglo original
+
+// Otra forma de eliminar el valor de un objeto
+
+copiaDeMiObjeto.esMayorDeEdad = undefined // Estamos marcando la propiedad como que ya no la vamos a usar
+
+console.log(copiaDeMiObjeto)
+
+// Insertar una nueva propiedad a un objeto
+
+miObjeto.platilloFavorito = 'Ceviche de conchas negras'
+miObjeto['juegos$favoritos'] = ['Crash Tean Racing', 'Mario', 'Minecraft']
+
+console.log(miObjeto)
+
+// TODO: Ejercicio - Manejos de las frutas
+
+const frutas = [
+  { nombre: "manzana", precio: 2, cantidad: 10 },
+  { nombre: "banana", precio: 1, cantidad: 0 },
+  { nombre: "naranja", precio: 1.5, cantidad: 5 },
+  { nombre: "kiwi", precio: 3, cantidad: 2 },
+  { nombre: "uva", precio: 2.5, cantidad: 20 }
+]
+
+// 1. includes → ¿tenemos "kiwi"?
+
+const nombresFrutas = frutas.map(fruta => fruta.nombre);
+const tieneKiwi2 = nombresFrutas.includes("kiwi");
+console.log('¿Tenemos kiwi? (con includes en nombres):', tieneKiwi2);
+
+// 2. map → obtener solo los precios
+
+const precios = frutas.map(fruta => fruta.precio);
+console.log('2. Precios de todas las frutas:', precios);
+
+// 3. filter → frutas con stock disponible
+
+const frutasDisponibles = frutas.filter(fruta => fruta.cantidad > 0);
+console.log('3. Frutas con stock disponible:');
+console.log(frutasDisponibles);
+
+// 4. reduce → calcular el valor total del inventario
+
+const valorTotalInventario = frutas.reduce((acumulador, fruta) => {
+  return acumulador + (fruta.precio * fruta.cantidad);
+}, 0);
+
+console.log('4. Valor total del inventario:', valorTotalInventario);
+
+// 5. every → ¿todas las frutas tienen precio mayor a 0?
+
+const todasPrecioMayorACero = frutas.every(fruta => fruta.precio > 0);
+console.log('5. ¿Todas las frutas tienen precio mayor a 0?', todasPrecioMayorACero);
+
+// 6. some → ¿hay alguna fruta sin stock?
+const frutasSinStock = frutas.filter(fruta => fruta.cantidad === 0);
+console.log(' 6  Frutas sin stock:', frutasSinStock.map(f => f.nombre));
