@@ -58,7 +58,7 @@ function drawGift(size, symbol) {
     // Array para almacenar las líneas del regalo
     const lines = [];
     
-    // 1. Primera línea: tamaño completo de símbolos
+    // 1. Primera linea: tamaño completo de simbolos
     const topLine = symbol.repeat(size);
     lines.push(topLine);
     
